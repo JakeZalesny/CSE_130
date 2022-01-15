@@ -2,6 +2,8 @@
 Authentification Program
 Jake Zalesny
 This program is meant to Authenticate User IDs and Passwords
+The hardest part was figuring out what I needed to read a Json file
+It took about 2 hours to complete this assignment
 """
 # This import allows me to read the Json file
 import json
