@@ -50,14 +50,13 @@ def authenticate_username_and_password(username, password, usernames, passwords)
     else :
         return False
 
-
-    
-
-
+# This is where the functions actually run
 users_and_passwords = get_file()
 usernames, passwords = sort_file(users_and_passwords)
 username, password = get_username_and_password()
 authentification = authenticate_username_and_password(username, password, usernames, passwords)
+
+# This runs the display at the end of the program
 if authentification == True :
     print("You are authenticated.")
 else :
