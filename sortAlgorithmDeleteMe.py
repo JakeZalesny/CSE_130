@@ -2,50 +2,39 @@
 Ascending Sort test
 
 """
+from array import array
+from fileinput import filename
+import json
 
-def get_list() :
+def get_filename():
+    file_name = input("What is the name of the file?")
+    return file_name
+
+def get_file_data(file_name) :
+    with open(file_name) as f :
+        data = f.read()
+        _list = json.loads(data)
+        array = _list["array"]
+    return array
+
+def sort_list(array) -> str :
+    n = len(array)
+
+    for i in range(n - 1) :        
+        for j in range(0, n - i - 1) :             
+            if array[j] > array[j + 1] :
+                array[j], array[j + 1] = array[j + 1], array[j]
     
-    _list = [31, 72, 10, 32, 18, 95, 25, 50]
-    return _list
-
-def sort_list(_list) -> str :
-    n = len(_list)
-    tis = []
-    ns = []
-    js = []
-    _listjs = []
-    _listjs1 = []
-    j = 0
-
-    for i in range(n - 1) :
-        tis.append(i)
-        js.append(j)
-        ns.append(n)
-        _listjs.append(_list[j])
-        _listjs1.append(_list[j + 1])
-        for j in range(0, n - i - 1) :
-            tis.append(i)
-            js.append(j)
-            ns.append(n)
-            _listjs.append(_list[j])
-            _listjs1.append(_list[j + 1]) 
-            
-            if _list[j] > _list[j + 1] :
-                _list[j], _list[j + 1] = _list[j + 1], _list[j]
-            tis.append(i)
-            js.append(j)
-            ns.append(n)
-            _listjs.append(_list[j])
-            _listjs1.append(_list[j + 1])
-    
-    print(_list) 
-    for i in range(len(tis)) :
-        print(tis[i], js[i], ns[i], _listjs[i], _listjs1[i],"\n")
 
 
 def main() :
-    _list = get_list()
-    sort_list(_list)
+    file_name = get_filename()
+    array = get_file_data(file_name)
+    sort_list(array)
+    
+    print(f"The values in {file_name} are: ")
+    for language in array :
+        print(f"\t{language}") 
 
 main()
 
