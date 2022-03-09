@@ -12,29 +12,37 @@
 #      -total time in hours including reading the assignment and submitting the program-
 
 """
-
+# Gets the desired number from the user and returns an int
 def get_user_number() -> int: 
     number = int(input("Which francois number would you like to see? "))
     return number
 
+# Calculates the francois nubmer based off of the user's input
 def do_calculation(number) -> int:
-    if number == 1 :
+    if number <= 0: 
+        print("Error please enter a positive integer")
+        return None
+
+    elif number == 1 :
         value = 2
+    
     elif number == 2 :
         value = 1
     
     else :
         f1 = 2
         f2 = 1 
-        for index in range(3, number):
+        for index in range(2, number):
             value = f1 + f2 
             f1 = f2
             f2 = value
     return value
 
+# Calls both functions and displays the message to the user. 
 def main(): 
     number = get_user_number()
     value = do_calculation(number)
-    print(f"Francois number {number} is {value}")
+    if value is not None:
+        print(f"Francois number {number} is {value}")
 
 main()
